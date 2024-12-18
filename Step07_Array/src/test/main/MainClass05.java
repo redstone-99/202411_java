@@ -1,7 +1,5 @@
 package test.main;
 
-import java.util.Scanner;
-
 import test.mypac.Bike;
 
 public class MainClass05 {
@@ -15,14 +13,20 @@ public class MainClass05 {
 		 */
 		
 		Bike[] bikes =  new Bike[3];
-		
+		//배열의 방의 사이즈 만큼 반복문 돌기
 		for(int i=0; i<bikes.length; i++) {
 			bikes[i] = new Bike();
 		}
 		
 		for (int i = 0; i < bikes.length; i++) {
-            bikes[i].ride();
+			//i 번째 방에 있는 Bike 객체의 참조값 얻어오기
+			Bike tmp=bikes[i];
+			//tmp 에 있는 Bike 객체의 .ride() .메소드 호출하기
+            tmp.ride();
         }
-		
+		System.out.println();
+		for(Bike tmp:bikes) {	//줄여서 간단히 확장 for 문
+			tmp.ride();
+		}
 	}
 }

@@ -45,7 +45,7 @@ public class MyFrame extends JFrame{
 		add(topPanel, BorderLayout.NORTH);
 		
 		ta=new JTextArea();
-		
+			
 		//TextArea 를 Scroll 패널에 감싼다.
 		JScrollPane scroll = new JScrollPane(ta);
 		//프레임의 가운데에 TextArea 추가
@@ -57,8 +57,13 @@ public class MyFrame extends JFrame{
 		sendBtn.addActionListener((event)->{
 			//TextField 에 입력한 문자열을 읽어온다.
 			String msg=inputMsg.getText();
+			
+			// 새로운 스레드에서 request() 메소드를 호출한다.
+			new Thread(() -> {
+		        request(msg);
+		    }).start();
 			//미리 준비된 메소드를 호출하면서 입력한 문자열을 등록한다 
-			request(msg);
+			//request(msg);
 		});
 		
 		//화면상에 실제 보이도록 한다. 
